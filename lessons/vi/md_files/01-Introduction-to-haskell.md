@@ -20,7 +20,7 @@
 - Mỗi bài học là một sổ tay Jupyter.
 - Mỗi sổ Jupyter là một chuỗi các ô.
 - Để thực thi một ô, hãy nhấn ⇧⏎ (Shift + Enter).
-- Bạn có thể chơi đùa với đoạn code bên trong các ô.
+- Bạn có thể tương tác với mã bên trong các ô.
 - Khi bạn đóng tab, mọi thay đổi sẽ bị mất.
 
 ## Haskell là gì?
@@ -31,11 +31,11 @@ Chúng ta sẽ xem xét từng tính chất của Haskell và trả lời câu h
 
 Haskell là một ngôn ngữ lập trình hàm.
 
-In imperative programming languages, function definitions are a sequence of imperative statements.
+Trong các ngôn ngữ lập trình mệnh lệnh, định nghĩa hàm là một chuỗi các câu lệnh mệnh lệnh.
 
-Trong các ngôn ngữ lập trình hàm, định nghĩa hàm là **cây biểu thức ánh xạ các giá trị tới các giá trị khác** .
+Trong các ngôn ngữ lập trình hàm, định nghĩa hàm là **cây biểu thức ánh xạ các giá trị này tới các giá trị khác**.
 
-**Các chương trình được xây dựng bằng cách *áp dụng* và *kết hợp* các hàm** .
+**Các chương trình được xây dựng bằng cách *áp dụng* và *kết hợp* các hàm**.
 
 ### Phép kết hợp hàm
 
@@ -45,7 +45,8 @@ Giống như cách kết hợp thông thường của các hàm trong toán họ
 
 Ví dụ: giả sử chúng ta có hai hàm $f$ và $g$:
 
-$$y = f(x)$$ $$z = g(y)$$
+$$y = f(x)$$ 
+$$z = g(y)$$
 
 Việc kết hợp chúng có nghĩa là trước tiên chúng ta tính $f(x)$ để có được $y$, sau đó sử dụng $y$ làm đối số để tính $g(y)$, ta thu được $z$.
 
@@ -262,7 +263,7 @@ if cheapComputation > 5 || expensiveComputation > 5 then "Done" else "This won't
 
 ## Vậy Haskell là gì?
 
-#### Haskell là một ngôn ngữ lập trình hàm **có tính lười biếng**, có kiểu tĩnh với **các hiệu ứng rõ ràng** và hàm của nó trông như thế này:
+#### Haskell là một ngôn ngữ lập trình hàm **có tính lười biếng**, có kiểu dữ liệu tĩnh với **các hiệu ứng rõ ràng** và hàm của nó trông như thế này:
 
 ```haskell
 volumeOfACylinder r h = pi * r^2 * h
