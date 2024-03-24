@@ -401,7 +401,7 @@ Phong cách khai báo | Phong cách biểu thức
 Mệnh đề `where` | Biểu thức `let`
 Khớp mẫu trong định nghĩa hàm: `f [] = 0` | Biểu thức case: `f xs = case xs of [] -> 0`
 Các guard trong định nghĩa hàm: `f [x] | x > 0 = 'a'` | Biểu thức `if`: `f [x] if x > 0 then 'a' else...`
-Function arguments on left-hand side: `f x = x*x` | Hàm lambda: `f = \x -> x*x`
+Đối số hàm ở phía bên trái: `fx = x*x` | Hàm lambda: `f = \x -> x*x`
 
 Cái tên lambda ở cuối bảng là gì vậy? Đó là chủ đề của bài học tuần tới! 😁 Vậy nên hãy nhớ xem nhé!
 
