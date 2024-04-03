@@ -45,7 +45,7 @@ checkLocalhost "127.0.0.1"
 
 Hàm `checkLocalhost` được áp dụng cho một đối số duy nhất thuộc kiểu `String` và trả về một giá trị khác thuộc kiểu `String`. Đối số là một chuỗi `ip` chứa địa chỉ IP và hàm sẽ kiểm tra xem chuỗi đó có bằng `"127.0.0.1"` hay không. Nếu kiểm tra thành công, hàm sẽ trả về `"It's localhost!"` , nếu không nó sẽ trả về `"No, it's not localhost."`
 
-<div class="alert alert-block alert-info">Trong khi với các ngôn ngữ lập trình mệnh lệnh, <code>else</code> không bắt buộc, nhưng trong Haskell thì ngược lại! Đó là vì trong Haskell, mọi hàm đều phải trả về một giá trị. Vì vậy, chúng ta có nghĩa vụ cung cấp kết quả cùng kiểu cho cả trường hợp <code>then</code> và <code>else</code> .</div>
+<div class="alert alert-block alert-info">Trong khi với các ngôn ngữ lập trình mệnh lệnh, nhánh <code>else</code> là không bắt buộc, nhưng với Haskell thì khác! Đó là vì trong Haskell, mọi hàm đều phải trả về một giá trị. Vì vậy, chúng ta có nghĩa vụ cung cấp kết quả cùng kiểu cho cả trường hợp <code>then</code> và <code>else</code>.</div>
 
 ## Guards
 
@@ -65,18 +65,6 @@ specialBirthday age =
             else "Nothing special"
 ```
 
-&lt;style&gt;/* Styles used for the Hoogle display in the pager */ .hoogle-doc { display: block; padding-bottom: 1.3em; padding-left: 0.4em; } .hoogle-code { display: block; font-family: monospace; white-space: pre; } .hoogle-text { display: block; } .hoogle-name { color: green; font-weight: bold; } .hoogle-head { font-weight: bold; } .hoogle-sub { display: block; margin-left: 0.4em; } .hoogle-package { font-weight: bold; font-style: italic; } .hoogle-module { font-weight: bold; } .hoogle-class { font-weight: bold; } .get-type { color: green; font-weight: bold; font-family: monospace; display: block; white-space: pre-wrap; } .show-type { color: green; font-weight: bold; font-family: monospace; margin-left: 1em; } .mono { font-family: monospace; display: block; } .err-msg { color: red; font-style: italic; font-family: monospace; white-space: pre; display: block; } #unshowable { color: red; font-weight: bold; } .err-msg.in.collapse { padding-top: 0.7em; } .highlight-code { white-space: pre; font-family: monospace; } .suggestion-warning { font-weight: bold; color: rgb(200, 130, 0); } .suggestion-error { font-weight: bold; color: red; } .suggestion-name { font-weight: bold; } &lt;/style&gt;<div class="suggestion-name" style="clear:both;">Use guards</div>
-<div class="suggestion-row" style="float: left;">
-<div class="suggestion-warning">Found:</div>
-<div class="highlight-code" id="haskell">specialBirthday age </div> <p data-md-type="paragraph">= if age == 1 then "First birthday!" else if age == 18 then "You're an adult!" else if age == 60 then "Finally, I can stop caring about new lingo!" else "Nothing special"</p>
-</div>
-
-
-<div class="suggestion-row" style="float: left;">
-<div class="suggestion-warning">Tại sao không phải là:</div>
-<div class="highlight-code" id="haskell">specialBirthday age | age == 1 = "First birthday!" | age == 18 = "You're an adult!" | age == 60 = "Finally, I can stop caring about new lingo!" | otherwise = "Nothing special"</div>
-</div>
-
 Đó là một mớ hỗn độn! Quá phức tạp để đọc và viết. May mắn thay, chúng ta có <strong>guards</strong>!
 
 Guards hoạt động tương tự như câu lệnh if-else, nhưng bạn có thể có nhiều điều kiện:
@@ -89,11 +77,11 @@ func arg
   ...
 ```
 
-Chúng ta sử dụng ký hiệu `|` để bắt đầu mỗi guard.
+Chúng ta sử dụng ký hiệu `|` để bắt đầu cho mỗi guard.
 
-<div class="alert alert-block alert-info">     Lưu ý rằng không có dấu <code>=</code> sau các đối số của <code>func</code> ! Đó là một lỗi phổ biến khi viết Guards. Đừng thêm <code>=</code> !</div>
+<div class="alert alert-block alert-info">Lưu ý rằng không có dấu <code>=</code> sau các đối số của <code>func</code> ! Điều này gây nên một lỗi phổ biến khi viết Guards. Hãy nhớ đừng thêm <code>=</code> vào đó nhé!</div>
 
-Với Guards, chúng ta có thể viết hàm `specialBirthday` như thế này:
+Với Guards, chúng ta có thể viết lại hàm `specialBirthday` như thế này:
 
 ```haskell
 specialBirthday :: Int -> [Char]
@@ -104,21 +92,9 @@ specialBirthday age
   | True = "Nothing special"
 ```
 
-&lt;style&gt;/* Styles used for the Hoogle display in the pager */ .hoogle-doc { display: block; padding-bottom: 1.3em; padding-left: 0.4em; } .hoogle-code { display: block; font-family: monospace; white-space: pre; } .hoogle-text { display: block; } .hoogle-name { color: green; font-weight: bold; } .hoogle-head { font-weight: bold; } .hoogle-sub { display: block; margin-left: 0.4em; } .hoogle-package { font-weight: bold; font-style: italic; } .hoogle-module { font-weight: bold; } .hoogle-class { font-weight: bold; } .get-type { color: green; font-weight: bold; font-family: monospace; display: block; white-space: pre-wrap; } .show-type { color: green; font-weight: bold; font-family: monospace; margin-left: 1em; } .mono { font-family: monospace; display: block; } .err-msg { color: red; font-style: italic; font-family: monospace; white-space: pre; display: block; } #unshowable { color: red; font-weight: bold; } .err-msg.in.collapse { padding-top: 0.7em; } .highlight-code { white-space: pre; font-family: monospace; } .suggestion-warning { font-weight: bold; color: rgb(200, 130, 0); } .suggestion-error { font-weight: bold; color: red; } .suggestion-name { font-weight: bold; } &lt;/style&gt;<div class="suggestion-name" style="clear:both;">Use otherwise</div>
-<div class="suggestion-row" style="float: left;">
-<div class="suggestion-warning">Found:</div>
-<div class="highlight-code" id="haskell">specialBirthday age </div> <p data-md-type="paragraph">| age == 1 = "First birthday!" | age == 18 = "You're an adult!" | age == 60 = "Finally, I can stop caring about new lingo!" | True = "Nothing special"</p>
-</div>
+Nhánh `True` cuối cùng đóng vai trò là một điều kiện tổng quát (bắt tất cả). Một điều kiện luôn đúng vì nó được đặt luôn bằng `True`.
 
-
-<div class="suggestion-row" style="float: left;">
-<div class="suggestion-warning">Tại sao không phải là:</div>
-<div class="highlight-code" id="haskell">specialBirthday age | age == 1 = "First birthday!" | age == 18 = "You're an adult!" | age == 60 = "Finally, I can stop caring about new lingo!" | otherwise = "Nothing special"</div>
-</div>
-
-Nhánh `True` cuối cùng đóng vai trò là một điều kiện "bắt tất cả". Một điều kiện luôn đúng vì nó luôn bằng `True` .
-
-Việc có điều kiện `True` trong guard cuối cùng phổ biến đến mức Haskell cung cấp sẵn một biến được gọi là `otherwise` luôn bằng `True` ( `otherwise = True` ) giúp guard dễ đọc hơn:
+Việc dùng điều kiện `True` trong guard cuối cùng phổ biến đến mức Haskell cung cấp sẵn một biến được gọi là `otherwise` luôn bằng `True` ( `otherwise = True` ) giúp guard dễ đọc hơn:
 
 ```haskell
 specialBirthday :: Int -> [Char]
@@ -135,7 +111,7 @@ specialBirthday 60
 "Finally, I can stop caring about new lingo!"
 ```
 
-Bây giờ bạn có thể dễ dàng hiểu được biểu thức này làm gì chỉ bằng một cái nhìn thoáng qua!
+Bây giờ bạn có thể dễ dàng hiểu được biểu thức này làm gì chỉ với một cái nhìn thoáng qua!
 
 Được rồi, vậy là xong về các phép kiểm tra điều kiện. Bây giờ, hãy xem làm thế nào để nâng tầm cách chúng ta viết hàm với `let` và `where` !
 
@@ -147,7 +123,7 @@ Hãy bắt đầu với `let` !
 
 ### Biểu thức `let`
 
-`let` có thể gán các biểu thức cho các biến cục bộ theo cách sau:
+`let` có thể dùng để kết nối các biểu thức với các biến cục bộ theo cách sau:
 
 ```haskell
 func arg =
@@ -158,15 +134,15 @@ func arg =
 
 Trong đó `<BIND_X>` là các phép gán cục bộ có thể truy cập được trong toàn bộ biểu thức `let` .
 
-Bây giờ, hãy tạo một hàm nhận hai nhiệt độ—một ở độ C và một ở độ F—và trả về nhiệt độ nóng hơn nhưng ở độ Kelvin. Có khá nhiều phép quy đổi, phải không?
+Bây giờ, hãy tạo một hàm nhận vào hai giá trị nhiệt độ - một ở độ C và một ở độ F - và trả về giá trị nhiệt độ nóng hơn nhưng ở độ Kelvin. Có khá nhiều phép quy đổi, phải không?
 
 Để chuyển từ độ F sang độ C, trước tiên chúng ta phải trừ 32 rồi nhân với 5/9, như sau:
 
-<code>tC = (tF - 32) * 5/9</code>
+`tC = (tF - 32) * 5/9`
 
 Để chuyển từ độ C sang độ Kelvin, chúng ta chỉ cần cộng 273,16 như thế này:
 
-<code>tK = tC + 273.16</code>
+`tK = tC + 273.16`
 
 Vì vậy, nếu muốn tạo **một hàm duy nhất** thực hiện tất cả những điều đó, chúng ta có thể làm như sau:
 
@@ -214,7 +190,7 @@ func arg = <EXP that uses BIND_1 and/or BIND_2>
           <BIND_2>
 ```
 
-Vì vậy, hàm `hotterInKelvin` tương tự như trên có thể được viết với `where` như thế này:
+Vì vậy, hàm `hotterInKelvin` tương tự như trên có thể được viết với `where` như dưới đây:
 
 Trong đó `<BIND_X>` là các phép gán có thể truy cập được trong toàn bộ nội dung hàm.
 
@@ -235,7 +211,7 @@ hotterInKelvin'' 40 100
 
 Ồ, cả hai dường như làm cùng một việc. Vậy, tại sao lại phải có cả hai? Liệu chúng ta có thể chỉ chọn sử dụng một trong số chúng không?
 
-Vâng, có rất nhiều trường hợp mà chúng có thể thay thế được cho nhau. Trong những trường hợp đó, bạn có thể chọn bất kỳ cái nào bạn thích nhất. Nhưng chúng cũng có những hạn chế và ưu điểm riêng.
+Vâng, có rất nhiều trường hợp mà chúng có thể thay thế được cho nhau. Trong những trường hợp đó, bạn có thể chọn bất kỳ cái nào bạn thích. Nhưng chúng cũng có những hạn chế và ưu điểm riêng.
 
 ### Nên sử dụng `let` hay `where` ?
 
@@ -309,9 +285,6 @@ let s1 = 10; s2 = 20; s3 = 30; in s1*s2*s3
 
 ```
 86400
-
-
-
 6000
 ```
 
@@ -363,4 +336,4 @@ Trong bài học này, chúng ta đã thảo luận về:
 
 - Cách sử dụng guards để tránh các câu lệnh if-else lồng nhau.
 
-- Cách sử dụng `let` và `where` lưu trữ kết quả của các phép tính trung gian, liên kết các biến cục bộ, cho phép mã sạch hơn và tránh lặp code.
+- Cách sử dụng `let` và `where` lưu trữ kết quả của các phép tính trung gian, gán các biến cục bộ, cho phép mã sạch hơn và tránh lặp code.

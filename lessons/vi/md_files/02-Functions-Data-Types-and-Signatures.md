@@ -2,7 +2,7 @@
 
 ## Nội dung
 
-- Giới thiệu về các kiểu
+- Giới thiệu về kiểu dữ liệu
 - Chữ ký kiểu của hàm
 - Làm việc với hàm
     - Các biến trong Haskell
@@ -11,11 +11,11 @@
 - Giá trị đa hình và biến kiểu
 - Vui vẻ với danh sách!
 
-## Giới thiệu về các kiểu
+## Giới thiệu về kiểu dữ liệu
 
 ### Toán tử `::`
 
-Kiểu dữ liệu là một nhãn gắn cho mỗi biểu thức, đưa ra những ràng buộc trong cách biểu thức được sử dụng.
+Kiểu dữ liệu là một nhãn gắn cho mỗi biểu thức, đưa ra những ràng buộc về cách biểu thức được sử dụng.
 
 Chúng ta sử dụng *dấu hai chấm đôi* `::` để hiển thị hoặc chỉ định kiểu cho biểu thức. Ví dụ:
 
@@ -82,7 +82,7 @@ có hai phần được *phân cách* bởi dấu hai chấm đôi:
 
 Chữ ký của hàm `square` cho chúng ta biết rằng nó chấp nhận một đối số *duy nhất* có kiểu `Int` và trả về một giá trị có cùng kiểu `Int`.
 
-Nếu có nhiều hơn một đối số, chúng sẽ được thêm vào chữ ký. Ví dụ: chữ ký hàm `prod`, trả về tích của hai đối số nguyên, có thể trông như sau:
+Nếu có nhiều hơn một đối số, thì chữ ký sẽ đơn giản được kéo dài ra. Ví dụ: chữ ký hàm `prod`, trả về tích của hai đối số nguyên, có thể trông như sau:
 
 ```haskell
 prod :: Int -> Int -> Int
@@ -93,7 +93,7 @@ Nó có hai đối số kiểu `Int` và đầu ra của nó cũng có kiểu `I
 
 Trong phần **định nghĩa** hàm, dấu `=` phân tách code thành hai phần:
 
-- **Phần đầu** là mã ở bên trái của dấu `=`, gồm **tên của hàm** và **tên đối số** (tên, không phải kiểu!), được phân tách bởi dấu cách.
+- **Phần đầu** là mã ở bên trái của dấu `=`, gồm **tên của hàm** và **tên đối số** (tên, chứ không phải kiểu!), được phân tách bởi dấu cách.
 
 - **Phần thân** là mã bên phải của dấu `=`, thể hiện bản chất của hàm, nội dung của nó.
 
@@ -105,11 +105,11 @@ Haskell là ngôn ngữ lập trình *hàm* và mọi chương trình đều bao
 not :: Bool -> Bool
 ```
 
-nhận vào một tham số kiểu `Bool` và trả về giá trị phủ định của nó, một lần nữa thuộc kiểu `Bool` .
+nhận vào một tham số kiểu `Bool` và trả về giá trị phủ định của nó, cũng thuộc kiểu `Bool` .
 
 Nhìn vào *dấu mũi tên `->` ngoài cùng bên phải* trong chữ ký, ta hiểu rằng:
 
-- mọi thứ ở bên trái nó là **kiểu của các đối số**, cũng được phân tách bằng dấu mũi tên `->` ,
+- mọi thứ ở bên trái nó là **kiểu của các đối số**, cũng được phân tách bởi các dấu mũi tên `->` ,
 
 - thứ ở bên phải là **kiểu giá trị trả về của hàm** .
 
@@ -123,16 +123,16 @@ Hãy xem hàm này:
 name = "Bob"
 ```
 
-Nếu không có tham số, chúng ta có một hàm luôn trả về cùng một giá trị - một `String` - bất kể thế nào!
+Hàm này không có tham số, chúng ta có một hàm luôn trả về cùng một giá trị - một `String` - bất kể thế nào!
 
-Vì vậy, chúng ta có một biểu thức kiểu:
+Vì vậy, chúng ta có một biểu thức kiểu như sau:
 
 ```haskell
 name :: String
 name = "Bob"
 ```
 
-**Loại hàm không nhận tham số thường được gọi là một definition (định nghĩa) hoặc name (tên).**
+**Loại hàm không có tham số thường được gọi là một definition (định nghĩa) hoặc name (tên).**
 
 Mặc dù vậy, bạn cũng có thể gọi nó là biến, vì đây là thứ hầu hết các ngôn ngữ lập trình gọi là biến. Tuy nhiên, chúng không phải lúc nào cũng có nghĩa giống nhau.
 
@@ -165,13 +165,13 @@ it'sTrue = True
 
 Chúng ta đang tuyên bố rằng thuật ngữ ở bên trái dấu `=` có **thể hoán đổi** với thuật ngữ ở bên phải dấu `=` .
 
-Và điều này cũng áp dụng cho các tham số của hàm:
+Và điều này cũng được áp dụng cho các tham số của hàm:
 
 ```haskell
 volumeOfACylinder r h = pi * r^2 * h
 ```
 
-Trong trường hợp này, khi chúng ta truyền các giá trị cho các tham số của `volumeOfACylinder` , chúng ta không thể thay đổi chúng bên trong phần thân hàm. Chúng ta có thể sử dụng lại hàm và truyền các tham số khác, nhưng chúng ta không thể *thay đổi* chúng một khi đã truyền chúng.
+Trong trường hợp này, khi chúng ta truyền các giá trị cho các tham số của `volumeOfACylinder` , chúng ta không thể thay đổi chúng bên trong phần thân hàm. Chúng ta có thể sử dụng lại hàm và truyền các giá trị khác cho tham số, nhưng chúng ta không thể *thay đổi* chúng một khi đã truyền chúng.
 
 ## Cách viết hàm trung tố và tiền tố
 
@@ -220,7 +220,7 @@ Chúng ta sử dụng dấu ngoặc đơn xung quanh hàm trung tố để sử 
 :t (+)
 ```
 
-<div class="alert alert-block alert-info"> Tôi chắc rằng bạn đã nhận thấy rằng chữ ký kiểu `+` trông khác với những chữ ký trước đó. Bởi vì nó sử dụng các kiểu đa hình và các lớp kiểu. Chúng ta sẽ tìm hiểu về các kiểu đa hình trong bài này và về các lớp kiểu trong các bài sau. Còn bây giờ, đừng quá bận tâm về nó.</div>
+<div class="alert alert-block alert-info"> Chắc hẳn bạn đã nhận thấy chữ ký kiểu của <code>+</code> trông khác với những chữ ký trước đó. Bởi vì nó sử dụng các kiểu đa hình và lớp kiểu. Chúng ta sẽ tìm hiểu về các kiểu đa hình trong bài này và về các lớp kiểu trong các bài sau. Còn bây giờ, đừng quá bận tâm về nó.</div>
 
 Chúng ta sử dụng các dấu backtick <code>`</code> bao quanh hàm tiền tố để sử dụng nó như dạng trung tố:
 
@@ -236,9 +236,9 @@ Chúng ta sử dụng các dấu backtick <code>`</code> bao quanh hàm tiền t
 
 Điều này có nghĩa là bạn sẽ không bao giờ bị tràn số học, nhưng nó cũng đồng nghĩa với việc số của bạn sẽ tương đối chậm.
 
-- Mặt khác, các giá trị `Int` giới hạn trong phạm vi $ ±2^{63} $ *(đối với CPU 64 bit)* .
+- Mặt khác, các giá trị `Int` giới hạn trong phạm vi `±2^63` *(đối với CPU 64 bit)*.
 
-Điều này giới hạn giá trị mà `Int` có thể biểu diễn, nhưng làm cho nó có hiệu suất tốt hơn.
+Điều này giới hạn giá trị mà `Int` có thể biểu diễn, nhưng giúp nó có hiệu suất tốt hơn.
 
 Hãy xem điều này trong thực tế:
 
@@ -254,9 +254,9 @@ Hãy xem điều này trong thực tế:
 2^127 :: Integer -- All good again
 ```
 
-Nhưng còn số thực? Số có phần thập phân thì sao? Đó là lý do tại sao chúng ta có `Float` và `Double` .
+Nhưng còn số thực? Số có phần thập phân thì sao? Chúng ta có `Float` và `Double` .
 
-### Các kiểu số dấu phẩy động: `Float` và `Double`
+### Các kiểu số thực dấu phẩy động: `Float` và `Double`
 
 `Float` là kiểu số thực dấu phẩy động với độ chính xác đơn (32 bit), trong khi `Double` là kiểu số thực dấu phẩy động với độ chính xác gấp đôi (64 bit).
 
@@ -278,13 +278,13 @@ Khuyến nghị dựa trên thực tế:
 
 - **Ngay cả khi bạn không đặc biệt quan tâm đến độ chính xác của giá trị, hãy sử dụng `Double` .** Máy tính hiện đại hiếm khi gặp bất lợi về tốc độ và với `Double` , bạn sẽ ít có khả năng tự bắn vào chân mình với các lỗi làm tròn.
 
-- Nếu bạn ở trong bối cảnh nơi **các số liệu chính xác là quan trọng** (ví dụ: tài chính và kế toán), một ý tưởng tốt là **sử dụng các kiểu dữ liệu `Rational` hoặc `Decimal`**. Vì chúng tránh hoàn toàn các lỗi làm tròn. Chúng ta sẽ đề cập đến chúng trong các bài học trong tương lai.
+- Nếu bạn ở trong bối cảnh nơi **các số liệu chính xác là quan trọng** (ví dụ: tài chính và kế toán), một ý tưởng tốt là **sử dụng các kiểu dữ liệu `Rational` hoặc `Decimal`**. Vì chúng tránh hoàn toàn các lỗi làm tròn. Chúng ta sẽ đề cập đến chúng trong các bài học sau.
 
 ### Kiểu boolean `Bool`
 
 Kiểu boolean `Bool` chỉ chứa hai giá trị: `True` và `False` .
 
-Các số, ký tự và chuỗi có thể được so sánh bằng cách sử dụng **các toán tử so sánh** thông thường để tạo ra giá trị `Bool` : $$ ==,~~/=,~~&lt;=,~~&gt;=,~~&lt;,~~&gt; $$
+Các số, ký tự và chuỗi có thể được so sánh bằng cách sử dụng **các toán tử so sánh** thông thường để tạo ra giá trị `Bool` : `==`, `/=`, `<=`, `>=`, `<`, `>`
 
 ```haskell
 
@@ -316,7 +316,7 @@ True || False
 
 <div class="alert alert-block alert-info">
 <p> Tiêu chuẩn Unicode (Unicode) là một bộ quy tắc thực thi cách xử lý và thể hiện văn bản. Nó cần thiết vì máy tính suy nghĩ bằng các số (số 1 và số 0) và chúng ta phải thống nhất xem số nào đại diện cho ký tự nào.</p>
-<p>Thực ra nó còn phức tạp hơn một chút (xem thêm: <a href="https://en.wikipedia.org/wiki/Character_encoding">Character encoding</a>). Nhưng với mục đích của chúng ta, chỉ cần biết rằng có thể sử dụng hầu hết mọi ký tự cần thiết bằng cách sử dụng các ký tự Unicode. Bao gồm các chữ cái, số và hơn 140.000 ký hiệu khác.</p>
+<p>Thực ra nó còn phức tạp hơn một chút (xem thêm: <a href="https://en.wikipedia.org/wiki/Character_encoding">Character encoding</a>). Nhưng với mục đích của chúng ta, chỉ cần biết rằng có thể biểu diễn hầu hết mọi ký tự cần thiết bằng cách sử dụng Unicode. Bao gồm các chữ cái, số và hơn 140.000 ký hiệu khác.</p>
 </div>
 
 Chúng ta viết các giá trị kiểu Char (ký tự Unicode) giữa các dấu nháy đơn. Như thế này:
@@ -331,9 +331,9 @@ Lưu ý rằng nếu bạn viết một số được bao quanh bởi dấu nhá
 
 <div class="alert alert-block alert-warning"> Quan trọng: Bạn chỉ có thể viết một ký tự mỗi lần! Một thứ như <code>'hi'</code> không phải là một <code>Char</code> hợp lệ!</div>
 
-Vậy làm sao để viết được câu đầy đủ? Tôi sẽ nói với bạn. Nhưng trước đó chúng ta phải tìm hiểu về danh sách.
+Vậy làm sao để viết được câu đầy đủ? Tôi sẽ nói với bạn. Nhưng trước hết chúng ta phải tìm hiểu về danh sách.
 
-### Kiểu danh sách <code>List</code>
+### Kiểu danh sách - List
 
 Trong Haskell, **danh sách là một cấu trúc dữ liệu đồng nhất** .
 
@@ -363,7 +363,7 @@ Nói đơn giản hơn, chúng là các danh sách lưu trữ các phần tử c
 ['H','i','!'] == "Hi!"
 ```
 
-Cũng như `String` và `[Char]` là cùng một kiểu! Cụ thể hơn, `String` là cú pháp dễ đọc - syntactic sugar (cú pháp được thiết kế để làm cho mọi thứ dễ đọc hoặc diễn đạt dễ dàng hơn) của `[Char]` ! Vì vậy, bạn có thể sử dụng chúng thay thế cho nhau!
+Như vậy `String` và `[Char]` là cùng một kiểu! Cụ thể hơn, `String` là cú pháp dễ đọc - syntactic sugar (cú pháp được thiết kế để làm cho mọi thứ dễ đọc hoặc diễn đạt dễ dàng hơn) của `[Char]` ! Vì vậy, bạn có thể sử dụng chúng thay thế cho nhau!
 
 Thứ mà bạn không thể sử dụng thay thế cho nhau trong Haskell là dấu nháy đơn và dấu nháy kép. `String` (được viết trong dấu nháy kép) là danh sách các phần tử `Char` (được viết trong dấu nháy đơn). Chúng không giống nhau!
 
@@ -374,7 +374,7 @@ Thứ mà bạn không thể sử dụng thay thế cho nhau trong Haskell là d
 
 Mọi lập trình viên đều biết rằng danh sách cực kỳ hữu ích. Nhưng nếu bạn muốn gộp các giá trị thuộc các kiểu khác nhau thì sao? Đó là khi bộ dữ liệu trở nên hữu ích!
 
-### Bộ dữ liệu <code>Tuple</code>
+### Bộ dữ liệu - Tuple
 
 Bộ dữ liệu - Tuple là cấu trúc được sử dụng để lưu trữ **các phần tử không đồng nhất** dưới dạng một giá trị.
 
@@ -412,7 +412,7 @@ Ví dụ:
 
 Như bạn có thể thấy, `('a', True) :: (Char, Bool)` , `(True, 'a') :: (Bool, Char)` , và `('a', True, True) :: (Char, Bool, Bool)`, tất cả đều có kiểu khác nhau. Với trình biên dịch, ba tuple đó là khác nhau, cũng giống như `Float` với `Char` .
 
-Bạn có nhận thấy rằng nếu bạn cố gắng tạo một tuple một phần tử, GHCi chỉ trả về phần tử đó không? (Hai biểu thức cuối cùng của khối mã trên). Đó là vì không có tuple một phần tử! Việc có một tuple một phần tử sẽ không mang lại thêm giá trị gì. Vì vậy, trong trường hợp này, Haskell bỏ qua tuple và chỉ đánh giá phần tử.
+Bạn có nhận thấy rằng nếu bạn cố gắng tạo một tuple một phần tử, GHCi chỉ trả về phần tử đó không? (biểu thức cuối cùng của khối mã trên). Đó là vì không có tuple một phần tử! Việc có một tuple một phần tử sẽ không mang lại thêm giá trị gì. Vì vậy, trong trường hợp này, Haskell bỏ qua tuple và chỉ đánh giá phần tử.
 
 ## Giá trị đa hình và biến kiểu
 
@@ -494,11 +494,11 @@ tail list
 
 Chúng ta không quan tâm đến các kiểu cụ thể. Chúng ta chỉ đang trích xuất một phần tử. Vì vậy, tham số là một danh sách đa hình (danh sách của bất kỳ kiểu nào, hãy gọi nó là `[a]` ). Và kết quả phải là một phần tử cùng kiểu với các phần tử trong danh sách. Đó là lý do tại sao nó phải là `a` .
 
-Bây giờ chúng ta đã quen thuộc với tất cả các kiểu này, hãy cùng vui vẻ một chút với danh sách! (Chúng ta sẽ để dành niềm vui với các tuple sau khi học về Pattern Matching - Khớp mẫu. Cách đó sẽ thú vị hơn.)
+Bây giờ chúng ta đã quen thuộc với tất cả các kiểu này, hãy cùng vui vẻ một chút với danh sách! (Chúng ta sẽ để dành niềm vui với các tuple sau khi học về Pattern Matching - Khớp mẫu. Sẽ rất thú vị đấy.)
 
 ## Vui vẻ với danh sách!
 
-Mọi phần tử đều có chỉ mục được xác định bởi vị trí của nó trong danh sách - bắt đầu từ 0 (không).
+Mỗi phần tử đều có chỉ mục được xác định bởi vị trí của nó trong danh sách - bắt đầu từ 0 (không).
 
 Chúng ta dùng toán tử `!!` để truy cập một phần tử cụ thể bên trong danh sách bằng cách sử dụng chỉ mục của nó:
 
@@ -537,11 +537,11 @@ Nếu bước nhảy là âm thì các phần tử sẽ được liệt kê theo
 
 Bạn cũng có thể sử dụng phạm vi để tạo danh sách vô hạn bằng cách không chỉ định giới hạn trên.
 
-- `[1..]` là danh sách vô hạn $ [1,2,3,4,5,...] $.
+- `[1..]` là danh sách vô hạn `[1,2,3,4,5,...]`.
 
-- `[1,3..]` là danh sách vô hạn $ [1,3,5,7,9,...] $.
+- `[1,3..]` là danh sách vô hạn `[1,3,5,7,9,...]`.
 
-Bây giờ, nếu chúng ta chỉ đánh giá danh sách, chương trình sẽ chạy mãi mãi (hoặc cho đến khi nó đổ vỡ). Vì vậy, danh sách vô hạn thường được sử dụng như một phần của biểu thức.
+Bây giờ, nếu chúng ta chỉ tính toán danh sách, chương trình sẽ chạy mãi mãi (hoặc cho đến khi nó đổ vỡ). Vì vậy, danh sách vô hạn thường được sử dụng như một phần của biểu thức.
 
 Chúng ta cũng có hàm `take` trả về một danh sách chứa `n` phần tử đầu tiên trong danh sách (có thể vô hạn) `l` .
 
@@ -571,7 +571,7 @@ Và chúng ta sử dụng toán tử **nối** `++` để ghép hai danh sách l
 
 Lưu ý rằng `++` là hàm nhận hai danh sách và `:` là hàm nhận một phần tử và một danh sách.
 
-**Cảnh báo:** Việc sử dụng toán tử `++` trên các danh sách dài (ngay cả khi bạn thêm một danh sách đơn vào danh sách, chẳng hạn: `[1,2,3] ++ [4]` ), buộc Haskell phải **duyệt qua toàn bộ danh sách** phía bên trái của `++` . Do đó, việc đặt thứ gì đó vào cuối danh sách dài 50 triệu phần tử sẽ mất một khoảng thời gian! Tuy nhiên, việc đặt một thứ gì đó vào đầu danh sách bằng toán tử cons `:` sẽ diễn ra ngay lập tức!
+**Cảnh báo:** Việc sử dụng toán tử `++` trên các danh sách dài (ngay cả khi bạn thêm một danh sách đơn vào một danh sách, chẳng hạn: `[1,2,3] ++ [4]` ), buộc Haskell phải **duyệt qua toàn bộ danh sách** phía bên trái của `++` . Do đó, việc đặt thứ gì đó vào cuối một danh sách dài 50 triệu phần tử sẽ mất một khoảng thời gian kha khá! Tuy nhiên, việc đặt một thứ gì đó vào đầu danh sách bằng toán tử cons `:` sẽ diễn ra ngay lập tức!
 
 Trong số nhiều hàm hữu ích được định nghĩa cho danh sách, chúng ta hãy điểm qua một vài hàm sau:
 
@@ -581,7 +581,7 @@ Trong số nhiều hàm hữu ích được định nghĩa cho danh sách, chún
 
 - `sum` nhận một danh sách các số và trả về tổng của chúng;
 
-- `elem` nhận một phần tử `x` và một danh sách các phần tử `l` cùng kiểu và kiểm tra xem `x` có phải là phần tử của danh sách `l` hay không.
+- `elem` nhận một phần tử `x` và một danh sách `l` chứa các phần tử cùng kiểu và kiểm tra xem `x` có phải là phần tử của danh sách `l` hay không.
 
 ```haskell
 length [2,4,5,6,7]
@@ -593,7 +593,7 @@ sum [-1,0,1,6,-5,-1]
 5 `elem` [6,3,5,7,5]
 ```
 
-Đó là những thứ về danh sách cho đến hiện tại. Chúng ta sẽ tiếp tục học thêm về chúng trong khóa học!
+Đó là mọi thứ về danh sách cho đến hiện tại. Chúng ta sẽ tiếp tục học thêm về chúng trong khóa học!
 
 ### Nối và ngắt văn bản
 

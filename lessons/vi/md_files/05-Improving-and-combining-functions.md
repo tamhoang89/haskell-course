@@ -7,7 +7,6 @@
 ## Nội dung
 
 - Hàm bậc cao - `filter` - `any`
-
 - Hàm Lambda
 - Mức ưu tiên (Precedence) và tính kết hợp (associativity)
 - Hàm curry - Curried functions
@@ -21,7 +20,7 @@
 
 **Hàm bậc cao** là hàm nhận các hàm khác làm đối số hoặc trả về một hàm làm kết quả.
 
-Bởi vì chúng ta có thể truyền các hàm làm đầu vào, trả về chúng như kết quả và gán chúng cho các biến, nên chúng giống như bất kỳ giá trị nào khác. Vì vậy, chúng ta nói rằng hàm là các  **công dân hạng nhất** .
+Bởi vì chúng ta có thể truyền các hàm làm đầu vào, trả về chúng như kết quả và gán chúng cho các biến, nên chúng giống như bất kỳ giá trị nào khác. Vì vậy, chúng ta nói rằng hàm là các **công dân hạng nhất** .
 
 Hãy bắt đầu với một ví dụ điển hình. Hãy tưởng tượng rằng bạn có một hàm mà bạn thường áp dụng hai lần (vì lý do nào đó). Như thế này:
 
@@ -76,7 +75,7 @@ Hãy bắt đầu với hàm `filter` :
 
 filter :: forall a. (a -&gt; Bool) -&gt; [a] -&gt; [a]
 
-Hàm này nhận một hàm kiểm tra (hàm trả về một boolean) `a -> Bool` và một danh sách các phần tử thuộc kiểu `a` và lọc các phần tử của danh sách thỏa mãn hàm kiểm tra đó.
+Hàm này nhận vào một hàm kiểm tra (hàm trả về một boolean) `a -> Bool` và một danh sách các phần tử thuộc kiểu `a` và lọc ra các phần tử của danh sách thỏa mãn hàm kiểm tra đó.
 
 Ví dụ: nếu muốn lọc ra các số chẵn trong danh sách từ 1 đến 20, chúng ta có thể thực hiện như sau:
 
@@ -148,7 +147,7 @@ Thuật ngữ hàm lambda xuất phát từ hệ thống toán học gọi là *
 
 Hàm lambda (còn gọi là hàm ẩn danh) là một định nghĩa hàm không có tên.
 
-Ví dụ: đây là một hàm lambda nhận hai đối số và nhân chúng (<code>f(x,y)=x*y</code>) trong Haskell:
+Ví dụ: đây là một hàm lambda nhận hai đối số và nhân chúng ( `f(x,y)=x*y` ) trong Haskell:
 
 ```haskell
 \x y -> x * y
@@ -356,7 +355,7 @@ add3 1 2 3
 6
 ```
 
-Điều này hoàn toàn tương ứng với định nghĩa của hàm! Tuy nhiên, để làm cho nó rõ ràng hơn, chúng ta sẽ làm cho việc Currying trở nên rõ ràng bằng cách sử dụng các hàm lambda.
+Điều này hoàn toàn tương đồng với định nghĩa của hàm! Tuy nhiên, để làm cho nó rõ ràng hơn, chúng ta sẽ diễn giải bằng cách sử dụng các hàm lambda.
 
 Bắt đầu với định nghĩa trên:
 
@@ -534,7 +533,7 @@ Chúng ta thấy rằng nó nhận một hàm `f` và một biến `x` rồi áp
 Và bạn biết gì không? Có một sự khác biệt nhỏ nhưng đáng kể giữa hai toán tử:
 
 - Toán tử "khoảng trắng" có mức độ ưu tiên kết hợp trái cao nhất.
-- Toán tử áp dụng hàm ( `${/code0} ) có mức độ ưu tiên kết hợp phải thấp nhất: {code1}infixr 0 $` .
+- Toán tử áp dụng hàm ( `$` ) có mức độ ưu tiên kết hợp phải thấp nhất: `infixr 0 $` .
 
 Bạn có thể thấy sự khác biệt nếu chúng ta làm rõ điều này bằng dấu ngoặc đơn:
 
@@ -554,7 +553,7 @@ max 5 4 + 2    -- Same as: ((max 5) 4) + 2
 max 5 $ 4 + 2  -- Same as: (max 5) (4 + 2)
 ```
 
-Như bạn có thể thấy trong các ví dụ trên, khi sử dụng `${/code0}, toàn bộ biểu thức ở bên phải của nó sẽ được áp dụng làm tham số cho hàm ở bên trái. Vì vậy, bạn có thể thấy việc sử dụng {/code1}$` giống như đưa mọi thứ ở bên phải vào trong cặp dấu ngoặc đơn.
+Như bạn có thể thấy trong các ví dụ trên, khi sử dụng `$`, toàn bộ biểu thức ở bên phải của nó sẽ được áp dụng làm tham số cho hàm ở bên trái. Vì vậy, bạn có thể thấy việc sử dụng `$` giống như đưa mọi thứ ở bên phải nó vào trong cặp dấu ngoặc đơn.
 
 Điều này đưa chúng ta đến cách sử dụng chính của `$` : Bỏ dấu ngoặc đơn!
 
@@ -597,7 +596,8 @@ complicatedF x = any even (filter (>25) (tail ( take 10 x)))
 
 Ở đây, chúng ta dùng hàm hợp khá nhiều! Chính xác là 3 lần! Và như bạn có thể thấy, đoạn code này khá khó đọc, vì vậy sơ đồ có thể giúp ích:
 
-$$ \boxed{\mathrm{[Int]}} \xrightarrow{\mathrm{~~~~~~take~10~~~~~~}} \boxed{\mathrm{[Int]}} \xrightarrow{ \mathrm{~~~~~~tail~~~~~~}} \boxed{\mathrm{[Int]}} \xrightarrow{~~~~~~\mathrm{filter~(&gt;25)}~~ ~~~~} \boxed{\mathrm{[Int]}} \xrightarrow{~~~~~~\mathrm{any~even}~~~~~~} \boxed{\mathrm{Bool}} \<br> \<br> =<br> \<br> \ \boxed{\mathrm{[Int]}} \xrightarrow{\mathrm{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~phức tạpF~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~}} \boxed{\mathrm{Bool}} $$
+$$ \boxed{\mathrm{[Int]}} \xrightarrow{\mathrm{take\ 10}} \boxed{\mathrm{[Int]}} \xrightarrow{\mathrm{tail}} \boxed{\mathrm{[Int]}} \xrightarrow{\mathrm{filter\ (>25)}} \boxed{\mathrm{[Int]}} \xrightarrow{\mathrm{any\ even}} \boxed{\mathrm{Bool}} \quad = \quad \boxed{\mathrm{[Int]}} \xrightarrow{\mathrm{complicatedF}} \boxed{\mathrm{Bool}} $$
+
 
 Chúng ta nhận danh sách `Int` làm đầu vào, sau đó sử dụng `take 10` để lấy 10 phần tử đầu tiên của danh sách, sau đó sử dụng kết quả làm đầu vào cho `tail` trả về 9 phần tử cuối cùng, sau đó sử dụng kết quả đó làm đầu vào cho `filter (>25)` để lọc các giá trị lớn hơn 25 và cuối cùng, lấy kết quả đó làm đầu vào cho `any even` để kiểm tra xem có số chẵn nào còn lại trong danh sách hay không.
 
