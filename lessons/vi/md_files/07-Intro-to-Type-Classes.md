@@ -497,7 +497,7 @@ Hãy tạo một hàm nhận hai giá trị và trả về `1` nếu giá trị 
 isXBigger x y = if x > y then 1 else 0
 ```
 
-In this case, `x` and `y` have to be instances of `Ord`. And the return value is a number of an unspecified type, so it's the more general `Num` instance.
+Trong trường hợp này, `x` và `y` phải là phiên bản của `Ord` . Và giá trị trả về là một số thuộc loại không xác định, do đó, đây là phiên bản `Num` tổng quát hơn.
 
 Đặt chúng lại với nhau, chữ ký kiểu sẽ là:
 
