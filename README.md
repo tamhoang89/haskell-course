@@ -297,7 +297,7 @@ In this section, we learn about a few of the most useful and talked about Abstra
 - The `Monoid` type class
 - What can I do with `Semigroup` and `Monoid`?
 
-### 18. Functor
+### 18. Functor [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/input-output-hk/haskell-course/HEAD?labpath=%2Flessons%2F18-Functor.ipynb) [![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=flat&logo=YouTube&logoColor=white)](https://www.youtube.com/watch?v=Fb4qD5PWEs8&list=PLNEK_Ejlx3x1D9Vq5kqeC3ZDEP7in4dqb&index=19)
 
 - Abstracting the `map` function
 - The `Functor` type class
@@ -311,9 +311,17 @@ In this section, we learn about a few of the most useful and talked about Abstra
 - Extra functions and `Functor` as defined in `base`
 
 
-### 19. Applicative and Effects
+### 19. Applicative and Effects [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/input-output-hk/haskell-course/HEAD?labpath=%2Flessons%2F19-Applicative.ipynb) [![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=flat&logo=YouTube&logoColor=white)](https://www.youtube.com/watch?v=7vxhNfNWP3k&list=PLNEK_Ejlx3x1D9Vq5kqeC3ZDEP7in4dqb&index=20)
 
-- TODO
+- Why `Applicative` functors?
+    - Our journey until now
+    - The limits of Functor
+- Function application at the `Functor` level 🥇
+- Being `pure` 😇
+- The `Applicative` type class
+- The `Applicative` laws
+- 🎆 Programming with effects 🎆
+- Extra functions and `Applicative` as defined in `base`
 
 ### 20. Project using `Functor` and `Applicative`
 
@@ -327,7 +335,7 @@ In this section, we learn about a few of the most useful and talked about Abstra
 
 - TODO
 
-### Speed-running other type classes? 🤔
+### Maybe speed-running other type classes? 🤔
 
 - TODO
 
